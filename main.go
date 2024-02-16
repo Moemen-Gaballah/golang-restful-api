@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -9,15 +8,17 @@ import (
 	"net/http"
 )
 
+var db *gorm.DB = nil
+var err error
+
 func main() {
 
 	// Connection Database
 	dsn := "root:@tcp(127.0.0.1:3306)/go-db?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		log.Fatal("Error Connecting database")
-		fmt.Println(db) // TODO remove
 	}
 
 	r := gin.Default()
