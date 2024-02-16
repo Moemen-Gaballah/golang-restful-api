@@ -29,6 +29,22 @@ Content-Type: application/json
 
 ###
 
+
+###
+# Update Post
+###
+
+PUT http://127.0.0.1:9090/posts/9
+Content-Type: application/json
+
+{
+  "title": "update title",
+  "description": "update description"
+}
+
+###
+
+
 ###
 # Delete by id
 ###

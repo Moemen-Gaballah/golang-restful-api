@@ -57,7 +57,35 @@ func Store(g *gin.Context) {
 }
 
 func Update(g *gin.Context) {
+	id := g.Param("id")
+	var oldPost Post
+	db.First(&oldPost, id)
+	if oldPost.ID == 0 {
+		g.JSON(http.StatusNotFound, gin.H{
+			"message": "We not found this post",
+			"data":    "",
+		})
+		return
+	}
 
+	var requestPost Post
+	if err := g.ShouldBindJSON(&requestPost); err != nil {
+		g.JSON(http.StatusBadRequest, gin.H{"message": err.Error(), "data": ""})
+		return
+	}
+
+	oldPost.Title = requestPost.Title
+	oldPost.Description = requestPost.Description
+	if requestPost.Status != "" {
+		oldPost.Status = requestPost.Status
+	}
+
+	db.Save(&oldPost)
+
+	g.JSON(http.StatusOK, gin.H{
+		"message": "Post has been updated",
+		"data":    oldPost,
+	})
 }
 
 func Delete(g *gin.Context) {
