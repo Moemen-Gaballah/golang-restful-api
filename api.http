@@ -1,8 +1,24 @@
-http://127.0.0.1:9090/posts?limit=2&offset=1
+#short-cut (ctrl + J)
+
+# Show list
+#http://127.0.0.1:9090/posts?limit=12&offset=1
+###
+
+http://127.0.0.1:9090/posts
 Accept: application/json
 
 ###
-#short-cut (ctrl + J)
+# show by id
+###
+
+http://127.0.0.1:9090/posts/7
+Accept: application/json
+
+
+###
+# Store Post
+###
+
 POST http://127.0.0.1:9090/posts
 Content-Type: application/json
 
@@ -12,3 +28,11 @@ Content-Type: application/json
 }
 
 ###
+
+###
+# Delete by id
+###
+
+DELETE http://127.0.0.1:9090/posts/11
+Accept: application/json
+
