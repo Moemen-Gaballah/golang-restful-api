@@ -1,0 +1,13 @@
+go build
+
+.\curd-restful-api
+
+
+go install github.com/canthefason/go-watcher/cmd/watcher
+watcher
+
+/***************/
+/*** Install ***/
+1- Gin (Framework)
+2- Gorm (ORM)
+3-

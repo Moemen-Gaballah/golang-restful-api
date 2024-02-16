@@ -1,0 +1,14 @@
+http://127.0.0.1:9090/posts
+Accept: application/json
+
+###
+#short-cut (ctrl + J)
+POST http://127.0.0.1:9090/posts
+Content-Type: application/json
+
+{
+    "title": "title",
+    "description": "description"
+}
+
+###
